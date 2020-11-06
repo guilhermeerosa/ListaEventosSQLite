@@ -36,7 +36,7 @@ public class CadastroEvento extends AppCompatActivity {
         carregarEvento();
     }
 
-    private void carregarLocais(){
+    private void carregarLocais() {
         LocalDAO localDAO = new LocalDAO(getBaseContext());
         locaisAdapter = new ArrayAdapter<Local>(CadastroEvento.this,
                 android.R.layout.simple_spinner_item,
@@ -44,10 +44,10 @@ public class CadastroEvento extends AppCompatActivity {
         spinnerLocais.setAdapter(locaisAdapter);
     }
 
-    private void carregarEvento(){
+    private void carregarEvento() {
         Intent intent = getIntent();
-        if(intent != null && intent.getExtras() != null &&
-                intent.getExtras().get("eventoEdicao") != null){
+        if (intent != null && intent.getExtras() != null &&
+                intent.getExtras().get("eventoEdicao") != null) {
             Evento evento = (Evento) intent.getExtras().get("eventoEdicao");
             editTextNome.setText(evento.getNome());
             editTextData.setText(evento.getData());
@@ -57,20 +57,20 @@ public class CadastroEvento extends AppCompatActivity {
         }
     }
 
-    private int obterPosicaoLocal(Local local){
-        for(int posicao = 0; posicao < locaisAdapter.getCount(); posicao++){
-            if(locaisAdapter.getItem(posicao).getId() == local.getId()){
+    private int obterPosicaoLocal(Local local) {
+        for (int posicao = 0; posicao < locaisAdapter.getCount(); posicao++) {
+            if (locaisAdapter.getItem(posicao).getId() == local.getId()) {
                 return posicao;
             }
         }
         return 0;
     }
 
-    public void onClickVoltar(View v){
+    public void onClickVoltar(View v) {
         finish();
     }
 
-    public void onClickCadastrar(View v){
+    public void onClickCadastrar(View v) {
         String nome = editTextNome.getText().toString();
         String data = editTextData.getText().toString();
         int posicaoLocal = spinnerLocais.getSelectedItemPosition();
@@ -78,23 +78,24 @@ public class CadastroEvento extends AppCompatActivity {
         Evento evento = new Evento(id, nome, data, local);
         EventoDAO eventoDAO = new EventoDAO(getBaseContext());
         boolean salvou = eventoDAO.salvar(evento);
-        if(salvou){
+        if (salvou) {
             finish();
-        }else{
+        } else {
             Toast.makeText(CadastroEvento.this, "Erro ao salvar, tente mais tarde", Toast.LENGTH_LONG).show();
         }
         finish();
     }
 
-    public void onClickExcluir(View v){
+    public void onClickExcluir(View v) {
         Intent intent = getIntent();
-        if(intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("eventoExcluir") != null){
+        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("eventoExcluir") != null) {
             Evento evento = (Evento) intent.getExtras().getSerializable("eventoExcluir");
             EventoDAO eventoDAO = new EventoDAO(getBaseContext());
             eventoDAO.excluir(evento);
             finish();
-        }else{
+        } else {
             Toast.makeText(CadastroEvento.this, "Item não criado, ímpossivel Excluir.", Toast.LENGTH_LONG).show();
         }
     }
+
 }

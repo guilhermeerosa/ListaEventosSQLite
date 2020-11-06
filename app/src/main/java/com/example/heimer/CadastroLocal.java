@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.heimer.Modelo.Local;
 import com.example.heimer.database.LocalDAO;
 
@@ -31,10 +32,10 @@ public class CadastroLocal extends AppCompatActivity {
         carregarLocal();
     }
 
-    private void carregarLocal(){
+    private void carregarLocal() {
         Intent intent = getIntent();
-        if(intent != null && intent.getExtras() != null &&
-                intent.getExtras().get("localEditar") != null){
+        if (intent != null && intent.getExtras() != null &&
+                intent.getExtras().get("localEditar") != null) {
             Local local = (Local) intent.getExtras().get("localEditar");
             editTextEndereco.setText(local.getEndereco());
             editTextBairro.setText(local.getBairro());
@@ -44,11 +45,11 @@ public class CadastroLocal extends AppCompatActivity {
         }
     }
 
-    public void onClickVoltar(View v){
+    public void onClickVoltar(View v) {
         finish();
     }
 
-    public void onClickCadastrar(View v){
+    public void onClickCadastrar(View v) {
         String endereco = editTextEndereco.getText().toString();
         String bairro = editTextBairro.getText().toString();
         String cidade = editTextCidade.getText().toString();
@@ -56,22 +57,22 @@ public class CadastroLocal extends AppCompatActivity {
         Local local = new Local(id, endereco, bairro, cidade, capacidade);
         LocalDAO localDAO = new LocalDAO(getBaseContext());
         boolean salvou = localDAO.salvar(local);
-        if(salvou){
+        if (salvou) {
             finish();
-        }else{
+        } else {
             Toast.makeText(CadastroLocal.this, "Erro ao salvar, tente mais tarde", Toast.LENGTH_LONG).show();
         }
         finish();
     }
 
-    public void onClickExcluir(View v){
+    public void onClickExcluir(View v) {
         Intent intent = getIntent();
-        if(intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("localExcluir") != null){
+        if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("localExcluir") != null) {
             Local local = (Local) intent.getExtras().getSerializable("localExcluir");
             LocalDAO localDAO = new LocalDAO(getBaseContext());
             localDAO.excluir(local);
             finish();
-        }else{
+        } else {
             Toast.makeText(CadastroLocal.this, "Item não criado, ímpossivel Excluir.", Toast.LENGTH_LONG).show();
         }
     }

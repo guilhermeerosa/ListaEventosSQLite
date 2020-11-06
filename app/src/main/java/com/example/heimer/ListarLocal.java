@@ -26,7 +26,7 @@ public class ListarLocal extends AppCompatActivity {
         definirOnclickListenerListViewLocal();
     }
 
-    private void definirOnclickListenerListViewLocal(){
+    private void definirOnclickListenerListViewLocal() {
         lvLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -47,12 +47,12 @@ public class ListarLocal extends AppCompatActivity {
         lvLocal.setAdapter(adapterLocal);
     }
 
-    public void onClickCadastrarLocal(View v){
+    public void onClickCadastrarLocal(View v) {
         Intent intent = new Intent(ListarLocal.this, CadastroLocal.class);
         startActivity(intent);
     }
 
-    public void onClickVoltarLocal(View v){
+    public void onClickVoltarLocal(View v) {
         Intent intent = new Intent(ListarLocal.this, MainActivity.class);
         startActivity(intent);
         finish();
