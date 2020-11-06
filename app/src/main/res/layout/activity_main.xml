@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView_Buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar por Nome do evento" />
+
+    <EditText
+        android:id="@+id/editText_buscarEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView_buscarLocal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar por Local" />
+
+    <Spinner
+        android:id="@+id/spinner_buscaLocais"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_pesquisar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pesquisar" />
+
+    <ListView
+        android:id="@+id/lvEvento"
+        android:layout_width="match_parent"
+        android:layout_height="447dp">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btnListarLocais"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickListarLocais"
+        android:text="Lista de Locais" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCadastrarEvento"
+        android:text="Cadastrar Evento" />
+
+</LinearLayout>
