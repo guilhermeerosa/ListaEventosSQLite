@@ -40,7 +40,7 @@ public class CadastroLocal extends AppCompatActivity {
             editTextEndereco.setText(local.getEndereco());
             editTextBairro.setText(local.getBairro());
             editTextCidade.setText(local.getCidade());
-            editTextCapacidade.setText(local.getCapacidade());
+            editTextCapacidade.setText(String.valueOf(local.getCapacidade()));
             id = local.getId();
         }
     }
